@@ -24,6 +24,15 @@ public class StringCalculator {
             }
         }
 
-        return 0;
+        int sum = 0;
+        for (String numStr : numbers.split(delimiter)) {
+            int num = Integer.parseInt(numStr);
+            if (num < 0) {
+                throw new IllegalArgumentException("음수는 허용되지 않습니다: " + num);
+            }
+            sum += num;
+        }
+        return sum;
+
     }
 }
