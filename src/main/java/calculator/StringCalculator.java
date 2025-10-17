@@ -26,11 +26,15 @@ public class StringCalculator {
 
         int sum = 0;
         for (String numStr : numbers.split(delimiter)) {
-            int num = Integer.parseInt(numStr);
-            if (num < 0) {
-                throw new IllegalArgumentException("음수는 허용되지 않습니다: " + num);
+            try {
+                int num = Integer.parseInt(numStr);
+                if (num < 0) {
+                    throw new IllegalArgumentException("음수는 허용되지 않습니다: " + num);
+                }
+                sum += num;
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("잘못된 입력값이 포함되어 있습니다: " + numStr);
             }
-            sum += num;
         }
         return sum;
 
