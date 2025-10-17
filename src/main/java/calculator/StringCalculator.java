@@ -15,8 +15,9 @@ public class StringCalculator {
         String delimiter = ",|:";
         String numbers = input;
 
-        // 커스텀 구분자 형식: //;\n1;2;3
+        // 커스텀 구분자 형식
         if (input.startsWith("//")) {
+            input = input.replaceAll("\\\\n", "\n");
             Matcher m = Pattern.compile("//(.)\n(.*)").matcher(input);
             if (m.matches()) {
                 delimiter += "|" + m.group(1);
